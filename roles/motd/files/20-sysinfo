@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Display current date and time
+echo "Current Date: $(date)"
+
+# Display system load
+echo "System Load: $(awk '{print $1, $2, $3}' /proc/loadavg)"
+
+# Display disk usage for root, home, and /var/lib/docker
+echo "Disk Usage:"
+df -h | awk '/\/$/ { print "  Root: " $3 " used of " $2 " (" $5 " used)" }'
+df -h | awk '/\/home$/ { print "  Home: " $3 " used of " $2 " (" $5 " used)" }'
+df -h | awk '/\/var\/lib\/docker$/ { print "  Docker: " $3 " used of " $2 " (" $5 " used)" }'
+
+# Display memory usage
+mem_usage=$(free -h | awk '/^Mem:/ { print $3 " used of " $2 }')
+printf "Memory Usage: $mem_usage\n\n"

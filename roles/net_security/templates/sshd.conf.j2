@@ -1,0 +1,9 @@
+[sshd]
+enabled = true
+port = {{ ssh_port }}
+filter = sshd
+backend=systemd
+maxretry = 3
+findtime = 60
+bantime = 100d
+ignoreip = {{ allowed_ip }}
