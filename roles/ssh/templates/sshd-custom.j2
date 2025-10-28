@@ -1,0 +1,23 @@
+Port {{ ssh_port }}
+ListenAddress 0.0.0.0
+
+AuthenticationMethods publickey
+
+Protocol 2
+
+LogLevel INFO
+
+LoginGraceTime 30
+PermitRootLogin no
+MaxAuthTries 3
+
+AllowGroups sshusers
+
+PubkeyAuthentication yes
+
+AuthorizedKeysFile	.ssh/authorized_keys
+
+PasswordAuthentication no
+PermitEmptyPasswords no
+
+X11Forwarding no

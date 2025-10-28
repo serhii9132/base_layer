@@ -1,0 +1,11 @@
+---
+- name: Remove disclaimer
+  ansible.builtin.command: rm /etc/motd
+
+- name: Copy 20-sysinfo
+  ansible.builtin.copy:
+    src: 20-sysinfo
+    dest: /etc/update-motd.d/20-sysinfo
+    owner: root
+    group: root
+    mode: 0744

@@ -1,0 +1,60 @@
+---
+- name: Remove debian user (Cloudinit image)
+  ansible.builtin.user:
+    name: debian 
+    state: absent
+    remove: yes 
+  when: ansible_distribution == "Debian"
+
+- name: Remove ubuntu user (Cloudinit image)
+  ansible.builtin.user:
+    name: ubuntu 
+    state: absent
+    remove: yes 
+  when: ansible_distribution == "Ubuntu"
+
+- name: Remove vagrant user (Vagrant images)
+  ansible.builtin.user:
+    name: vagrant 
+    state: absent
+    remove: yes 
+
+- name: Update root password
+  no_log: true
+  ansible.builtin.user:
+    name: root
+    password: "{{ root_pass }}"
+  when: root_pass | length > 0
+
+- name: Create ssh group
+  ansible.builtin.group:
+    name: "{{ ssh_group }}"
+    state: present
+
+- name: Create a new user
+  no_log: true 
+  ansible.builtin.user:
+    name: "{{ sudo_user }}"
+    password: "{{ sudo_user_pass }}"
+    shell: /bin/bash
+    groups: 
+      - sudo
+      - "{{ ssh_group }}"
+  when: sudo_user_pass | length > 0
+
+- name: Applying the SSH public key
+  block:
+  - name: Check if authorized_keys exists
+    ansible.builtin.stat:
+      path: "/home/{{ sudo_user }}/.ssh/authorized_keys"
+    register: stat_authorized_keys
+
+  - name: Add key to user
+    no_log: true
+    ansible.builtin.authorized_key:
+      user: "{{ sudo_user}}"
+      state: present
+      key: "{{ ssh_pub_key }}"
+    when: not stat_authorized_keys.stat.exists
+  
+  when: ssh_pub_key | length > 0

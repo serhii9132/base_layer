@@ -1,0 +1,23 @@
+---
+- name: Install timeshift
+  ansible.builtin.apt:
+    name: timeshift
+    update_cache: true
+    state: present
+
+- name: Get information about root partition
+  ansible.builtin.set_fact:
+    root_mount_info: "{{ ansible_facts.mounts | selectattr('mount', '==', '/') | first }}"
+
+- name: Extract root UUID
+  ansible.builtin.set_fact:
+    root_uuid: "{{ root_mount_info.uuid }}"
+  when: root_mount_info.uuid is defined
+
+- name: Apply timeshift.json template
+  ansible.builtin.template:
+    src: timeshift.j2
+    dest: /etc/timeshift/timeshift.json
+    owner: root
+    group: root
+    mode: 0644

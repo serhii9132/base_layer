@@ -1,0 +1,19 @@
+---
+- name: Set timezone
+  community.general.timezone:
+    name: Europe/Kyiv
+
+- name: Configure system hostname
+  block:
+  - name: Set hostname
+    no_log: true
+    ansible.builtin.hostname:
+      name: "{{ hostname }}"
+
+  - name: Update /etc/hosts from template
+    ansible.builtin.template:
+      src: hosts.j2
+      dest: /etc/hosts
+      owner: root
+      group: root
+      mode: 0644
