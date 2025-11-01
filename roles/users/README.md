@@ -11,13 +11,43 @@ The role configures the system by:
 
 Role Variables
 --------------
-
-| Name                | Comment                                          | Default value |
-|---------------------|--------------------------------------------------|---------------|
-| sudo_user           | Login of the user with sudo privileges           | ``            |
-| sudo_user_pass      | Password of the user with sudo privileges        | ``            |
-| ssh_pub_key         | Public SSH key of a user with sudo privileges    | ``            |
-| root_pass           | Password of the root user                        | ``            |
+<table>
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Comment</th>
+    <th>Type</th>
+    <th>Default Value</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>sudo_user</td>
+    <td>Login of the user with sudo privileges</td>
+    <td>str</td>
+    <td>''</td>
+  </tr>
+  <tr>
+    <td>sudo_user_pass</td>
+    <td>Password of the user with sudo privileges</td>
+    <td>str</td>
+    <td>''</td>
+  </tr>
+    <tr>
+    <td>ssh_pub_key</td>
+    <td>Public SSH key of a user with sudo privileges</td>
+    <td>str</td>
+    <td>''</td>
+  </tr>
+  </tr>
+    <tr>
+    <td>root_pass</td>
+    <td>Password of the root user</td>
+    <td>str</td>
+    <td>''</td>
+  </tr>
+</tbody>
+</table>
 
 Example Playbook
 ----------------

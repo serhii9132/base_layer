@@ -3,10 +3,24 @@ The role is created to run common tasks on hosts.
 
 Role Variables
 --------------
-
-| Name        | Comment      | Default value |
-|-------------|--------------|---------------|
-| hostname    | Hostname     | `host`        |
+<table>
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Comment</th>
+    <th>Type</th>
+    <th>Default Value</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>hostname</td>
+    <td>Hostname</td>
+    <td>str</td>
+    <td>'host'</td>
+  </tr>
+</tbody>
+</table>
 
 Example Playbook
 ----------------

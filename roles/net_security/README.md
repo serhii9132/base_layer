@@ -14,11 +14,30 @@ Fail2Ban configuration:
 
 Role Variables
 --------------
-
-| Name        | Comment                       | Default value |
-|-------------|-------------------------------|---------------|
-| allowed_ip  | Allowed IP for connection     | ``            |
-| ssh_port    | Port sshd                     | `2222`         |
+<table>
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Comment</th>
+    <th>Type</th>
+    <th>Default Value</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>allowed_ip</td>
+    <td>Allowed IP for connection</td>
+    <td>str</td>
+    <td>''</td>
+  </tr>
+  <tr>
+    <td>ssh_port</td>
+    <td>Port sshd</td>
+    <td>int</td>
+    <td>2222</td>
+  </tr>
+</tbody>
+</table>
 
 Example Playbook
 ----------------

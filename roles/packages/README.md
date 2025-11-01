@@ -10,10 +10,24 @@ By default, the role installs:
 
 Role Variables
 --------------
-
-| Name            | Comment                           | Default value |
-|-----------------|-----------------------------------|---------------|
-|  extra_pkgs     | A list of additional packages     | `[]`          |
+<table>
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Comment</th>
+    <th>Type</th>
+    <th>Default Value</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>extra_pkgs</td>
+    <td>A list of additional packages</td>
+    <td>list</td>
+    <td>[]</td>
+  </tr>
+</tbody>
+</table>
 
 Example Playbook
 ----------------
