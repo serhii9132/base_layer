@@ -1,12 +1,12 @@
 ---
-- name: Remove debian user (Cloudinit image)
+- name: Remove debian user (Cloudinit images)
   ansible.builtin.user:
     name: debian 
     state: absent
     remove: yes 
   when: ansible_distribution == "Debian"
 
-- name: Remove ubuntu user (Cloudinit image)
+- name: Remove ubuntu user (Cloudinit images)
   ansible.builtin.user:
     name: ubuntu 
     state: absent
@@ -41,6 +41,17 @@
       - sudo
       - "{{ ssh_group }}"
   when: sudo_user_pass | length > 0
+
+- name: Copy .bashrc from template
+  ansible.builtin.template:
+    src: bashrc.j2
+    dest: "{{ item.dir }}/.bashrc"
+    owner: "{{ item.user }}"
+    group: "{{ item.user }}"
+    mode: 0644
+  loop: 
+    - { user: root, dir: /root }
+    - { user: "{{ sudo_user }}", dir: "/home/{{ sudo_user }}"}
 
 - name: Applying the SSH public key
   block:
