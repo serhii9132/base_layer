@@ -10,6 +10,11 @@
     cmd: "rm -f {{ path_to_config }}/*"
   when: list_files.matched > 0
 
+- name: Create ssh group
+  ansible.builtin.group:
+    name: "{{ ssh_group }}"
+    state: present
+
 - name: Apply sshd-custom template
   ansible.builtin.template:
     src: sshd-custom.j2

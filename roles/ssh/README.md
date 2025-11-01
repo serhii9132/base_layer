@@ -19,7 +19,7 @@ LoginGraceTime 30
 PermitRootLogin no
 MaxAuthTries 3
 
-AllowGroups sshusers
+AllowGroups {{ ssh_group }}
 
 PubkeyAuthentication yes
 
@@ -48,6 +48,12 @@ Role Variables
     <td>Port sshd</td>
     <td>int</td>
     <td>2222</td>
+  </tr>
+  <tr>
+    <td>ssh_port</td>
+    <td>System group for SSH access</td>
+    <td>str</td>
+    <td>sshusers</td>
   </tr>
 </tbody>
 </table>

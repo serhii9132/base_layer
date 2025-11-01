@@ -1,2 +1,2 @@
 allowed_ip: ""
-ssh_port: 2222
+ssh_port: "{{ base_layer_ssh_port | default(2222) }}"
