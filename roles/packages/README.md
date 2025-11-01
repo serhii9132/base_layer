@@ -31,7 +31,7 @@ Role Variables
 
 Example Playbook
 ----------------
-yaml
+```yaml
 - name: Install packages
   hosts: all
   gather_facts: yes

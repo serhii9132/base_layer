@@ -1,5 +1,3 @@
-ssh_group: sshusers
-
 histsize: 10000
 histfilesize: 10000
 histtimeformat: "%d.%m.%Y %H:%M:%S - "

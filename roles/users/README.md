@@ -34,7 +34,7 @@ Role Variables
     <td>str</td>
     <td>''</td>
   </tr>
-    <tr>
+  <tr>
     <td>ssh_pub_key</td>
     <td>Public SSH key of a user with sudo privileges</td>
     <td>str</td>
@@ -46,6 +46,12 @@ Role Variables
     <td>Password of the root user</td>
     <td>str</td>
     <td>''</td>
+  </tr>
+  <tr>
+    <td>ssh_port</td>
+    <td>System group for SSH access</td>
+    <td>str</td>
+    <td>sshusers</td>
   </tr>
 </tbody>
 </table>

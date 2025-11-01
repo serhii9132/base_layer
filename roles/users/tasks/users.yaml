@@ -26,11 +26,6 @@
     password: "{{ root_pass }}"
   when: root_pass | length > 0
 
-- name: Create ssh group
-  ansible.builtin.group:
-    name: "{{ ssh_group }}"
-    state: present
-
 - name: Create a new user
   no_log: true 
   ansible.builtin.user:
