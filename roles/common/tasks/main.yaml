@@ -21,7 +21,7 @@
 - name: Copy zero_space scripts for VirtualBox VMs
   ansible.builtin.copy:
     src: zero_space
-    dest: /usr/local/bin/zero_space.sh
+    dest: /usr/local/bin/zero_space
     owner: root
     group: root
     mode: 0755
