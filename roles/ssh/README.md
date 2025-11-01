@@ -33,10 +33,24 @@ X11Forwarding no
 
 Role Variables
 --------------
-
-| Name        | Comment      | Default value |
-|-------------|--------------|---------------|
-| ssh_port    | Port sshd    | `2222`        |
+<table>
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Comment</th>
+    <th>Type</th>
+    <th>Default Value</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>ssh_port</td>
+    <td>Port sshd</td>
+    <td>int</td>
+    <td>2222</td>
+  </tr>
+</tbody>
+</table>
 
 Example Playbook
 ----------------
