@@ -17,3 +17,20 @@
       owner: root
       group: root
       mode: 0644
+
+- name: Copy zero_space scripts for VirtualBox VMs
+  ansible.builtin.copy:
+    src: zero_space
+    dest: /usr/local/bin/zero_space.sh
+    owner: root
+    group: root
+    mode: 0755
+  when: ansible_virtualization_type == 'virtualbox'
+
+- name: Copy 00-common-aliases.sh
+  ansible.builtin.copy:
+    src: 00-common-aliases.sh
+    dest: /etc/profile.d/00-common-aliases.sh
+    owner: root
+    group: root
+    mode: 0755
