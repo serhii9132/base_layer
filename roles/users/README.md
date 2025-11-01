@@ -2,11 +2,12 @@
 
 The role configures the system by:
 ```
-- removes the default debian and ubuntu users (included by default in CloudInit images)
+- removes the default users: debian and ubuntu (CloudInit images) and vagrant (Vagrant images)
 - creates the ssh_users group
 - creates a new user with sudo persmissions
 - adds the public SSH key to authorized_keys (if the key is not already present)
 - updates password for root
+- deploys a customized .bashrc configuration to the user's home directory
 ```
 
 Role Variables
