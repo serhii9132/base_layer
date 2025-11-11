@@ -1,0 +1,14 @@
+---
+- name: Install git
+  ansible.builtin.apt:
+    name: git
+    update_cache: true
+    state: present
+
+- name: Apply /etc/gitconfig from template
+  ansible.builtin.template:
+    src: gitconfig.j2
+    dest: /etc/gitconfig
+    owner: root
+    group: root
+    mode: 0644
