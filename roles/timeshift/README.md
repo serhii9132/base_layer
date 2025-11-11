@@ -5,23 +5,23 @@ Find the UUID of the root partition using Ansible gathering and writes it to tim
 The folders excluded from the backup are:
 ```
 /swapfile
-/home/
-/root/
-/dev/
-/var/tmp/
-/var/cache/
-/var/log/
-/run/
-/media/
-/mnt/
-/var/run/
-/proc//
-/sys/
-/run/media/
-/var/lib/kubelet/
-/var/lib/cni/
-/var/lib/containerd/
-/var/lib/docker/
+/home/**
+/root/**
+/dev/**
+/var/tmp/**
+/var/cache/**
+/var/log/**
+/run/**
+/media/**
+/mnt/**
+/var/run/**
+/proc/**/
+/sys/**
+/run/media/**
+/var/lib/kubelet/**
+/var/lib/cni/**
+/var/lib/containerd/**
+/var/lib/docker/**
 ```
 
 Example Playbook

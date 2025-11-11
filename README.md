@@ -34,9 +34,9 @@ Collection variables
 
 Example
 -------
-To maintain consistency, define these common variables once in your project's inventory data (e.g., in a dedicated file like group_vars/all/base_layer_vars.yaml):
+To maintain consistency, define these common variables once in your project's inventory data (e.g., in a dedicated file like group_vars/all.yaml):
 ```yaml
-# group_vars/all/base_layer_vars.yaml
+# group_vars/all.yaml
 
 base_layer_ssh_port: 22222
 base_layer_ssh_group: ssh_groups
