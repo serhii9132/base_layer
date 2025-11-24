@@ -1,9 +1,9 @@
 ---
 - name: Remove stock users
   ansible.builtin.user:
-    name: "{{ item }}" 
+    name: "{{ item }}"
     state: absent
-    remove: yes 
+    remove: true
   loop: "{{ stock_users }}"
 
 - name: Update root password
@@ -14,12 +14,12 @@
   when: root_pass | length > 0
 
 - name: Create a new user
-  no_log: true 
+  no_log: true
   ansible.builtin.user:
     name: "{{ sudo_user }}"
     password: "{{ sudo_user_pass }}"
     shell: /bin/bash
-    groups: 
+    groups:
       - sudo
       - "{{ ssh_group }}"
   when: sudo_user_pass | length > 0
@@ -30,15 +30,15 @@
     dest: "{{ item.dir }}/.bashrc"
     owner: "{{ item.user }}"
     group: "{{ item.user }}"
-    mode: 0644
-  loop: 
+    mode: '644'
+  loop:
     - { user: root, dir: /root }
     - { user: "{{ sudo_user }}", dir: "/home/{{ sudo_user }}"}
 
 - name: Add key to user
   no_log: true
-  ansible.builtin.authorized_key:
-    user: "{{ sudo_user}}"
+  ansible.posix.authorized_key:
+    user: "{{ sudo_user }}"
     state: present
     key: "{{ ssh_pub_key }}"
     exclusive: true

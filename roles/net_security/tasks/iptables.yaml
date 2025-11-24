@@ -67,3 +67,6 @@
 
 - name: Save rules
   ansible.builtin.shell: iptables-save > /etc/iptables/rules.v4
+  args:
+    creates: rules.v4
+    chdir: /etc/iptables/
