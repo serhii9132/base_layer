@@ -27,10 +27,10 @@
     mode: 0755
   when: ansible_virtualization_type == 'virtualbox'
 
-- name: Copy 00-common-aliases.sh
+- name: Copy common-aliases.sh
   ansible.builtin.copy:
-    src: 00-common-aliases.sh
-    dest: /etc/profile.d/00-common-aliases.sh
+    src: common-aliases.sh
+    dest: /etc/profile.d/common-aliases.sh
     owner: root
     group: root
     mode: 0755
