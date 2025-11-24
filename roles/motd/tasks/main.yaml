@@ -1,3 +1,4 @@
 ---
-- ansible.builtin.import_tasks: debian.yaml
+- name: Import debian.yaml
+  ansible.builtin.import_tasks: debian.yaml
   when: ansible_distribution == "Debian"

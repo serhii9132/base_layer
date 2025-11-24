@@ -1,2 +1,3 @@
 ---
-- ansible.builtin.import_tasks: users.yaml
+- name: Import users.yaml
+  ansible.builtin.import_tasks: users.yaml
