@@ -1,0 +1,25 @@
+name: Release collection
+on:
+  push:
+    tags:
+      - 'v*'
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+
+      - name: Install Ansible
+        run: pip install ansible-core
+
+      - name: Build Ansible Collection
+        run: ansible-galaxy collection build
+
+      - name: Publish to Ansible Galaxy
+        run: ansible-galaxy collection publish ./*.tar.gz --token ${{ secrets.GALAXY_API_KEY }}
