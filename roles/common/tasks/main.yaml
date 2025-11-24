@@ -5,18 +5,18 @@
 
 - name: Configure system hostname
   block:
-  - name: Set hostname
-    no_log: true
-    ansible.builtin.hostname:
-      name: "{{ hostname }}"
+    - name: Set hostname
+      no_log: true
+      ansible.builtin.hostname:
+        name: "{{ hostname }}"
 
-  - name: Update /etc/hosts from template
-    ansible.builtin.template:
-      src: hosts.j2
-      dest: /etc/hosts
-      owner: root
-      group: root
-      mode: 0644
+    - name: Update /etc/hosts from template
+      ansible.builtin.template:
+        src: hosts.j2
+        dest: /etc/hosts
+        owner: root
+        group: root
+        mode: '644'
 
 - name: Copy zero_space scripts for VirtualBox VMs
   ansible.builtin.copy:
@@ -24,7 +24,7 @@
     dest: /usr/local/bin/zero_space
     owner: root
     group: root
-    mode: 0755
+    mode: '755'
   when: ansible_virtualization_type == 'virtualbox'
 
 - name: Copy common-aliases.sh
@@ -33,4 +33,4 @@
     dest: /etc/profile.d/common-aliases.sh
     owner: root
     group: root
-    mode: 0755
+    mode: '755'
