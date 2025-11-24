@@ -1,23 +1,10 @@
 ---
-- name: Remove debian user (Cloudinit images)
+- name: Remove stock users
   ansible.builtin.user:
-    name: debian 
+    name: "{{ item }}" 
     state: absent
     remove: yes 
-  when: ansible_distribution == "Debian"
-
-- name: Remove ubuntu user (Cloudinit images)
-  ansible.builtin.user:
-    name: ubuntu 
-    state: absent
-    remove: yes 
-  when: ansible_distribution == "Ubuntu"
-
-- name: Remove vagrant user (Vagrant images)
-  ansible.builtin.user:
-    name: vagrant 
-    state: absent
-    remove: yes 
+  loop: "{{ stock_users }}"
 
 - name: Update root password
   no_log: true
@@ -48,19 +35,11 @@
     - { user: root, dir: /root }
     - { user: "{{ sudo_user }}", dir: "/home/{{ sudo_user }}"}
 
-- name: Applying the SSH public key
-  block:
-  - name: Check if authorized_keys exists
-    ansible.builtin.stat:
-      path: "/home/{{ sudo_user }}/.ssh/authorized_keys"
-    register: stat_authorized_keys
-
-  - name: Add key to user
-    no_log: true
-    ansible.builtin.authorized_key:
-      user: "{{ sudo_user}}"
-      state: present
-      key: "{{ ssh_pub_key }}"
-    when: not stat_authorized_keys.stat.exists
-  
+- name: Add key to user
+  no_log: true
+  ansible.builtin.authorized_key:
+    user: "{{ sudo_user}}"
+    state: present
+    key: "{{ ssh_pub_key }}"
+    exclusive: true
   when: ssh_pub_key | length > 0
