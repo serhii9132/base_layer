@@ -1,0 +1,6 @@
+alias apt-install='run-as-root apt install --assume-yes'
+alias apt-remove='run-as-root apt purge --autoremove --assume-yes'
+alias apt-fix='run-as-root apt install --fix-broken'
+alias apt-autoremove='run-as-root apt autoremove'
+alias apt-update='run-as-root apt update'
+alias clean_system='run-as-root apt-get autoremove && run-as-root apt-get clean && run-as-root apt-get autoclean'
