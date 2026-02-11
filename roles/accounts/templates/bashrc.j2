@@ -11,15 +11,15 @@ esac
 # append to the history file, don't overwrite it
 #shopt -s histappend
 
-HISTSIZE={{ histsize }}
-HISTFILESIZE={{ histfilesize }}
-HISTTIMEFORMAT="{{ histtimeformat }}"
-HISTCONTROL={{ histcontrol }}
+HISTSIZE={{ __accounts_histsize }}
+HISTFILESIZE={{ __accounts_histfilesize }}
+HISTTIMEFORMAT="{{ __accounts_histtimeformat }}"
+HISTCONTROL={{ __accounts_histcontrol }}
 
 shopt -s extglob
 HISTIGNORE='history*:clear:exit:mkdir:cd@( *|):pwd:cls:clc:proj:cddown:df:htop*:alias'
 
-PROMPT_COMMAND="{{ prompt_command }}"
+PROMPT_COMMAND="{{ __accounts_prompt_command }}"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.

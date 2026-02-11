@@ -4,10 +4,10 @@ The role configures the system by:
 ```
 - removes the default users: debian and ubuntu (CloudInit images) and vagrant (Vagrant images)
 - creates the ssh_users group
-- creates a new user with sudo persmissions
+- creates a new users with sudo persmissions
 - adds the public SSH key to authorized_keys (if the key is not already present)
 - updates password for root
-- deploys a customized .bashrc configuration to the user's home directory
+- deploys a customized .bashrc configuration to the users' home directory
 ```
 
 Role Variables
@@ -23,10 +23,10 @@ Role Variables
 </thead>
 <tbody>
   <tr>
-    <td>sudo_user</td>
-    <td>Login of the user with sudo privileges</td>
-    <td>str</td>
-    <td>''</td>
+    <td>accounts_clean_default_users</td>
+    <td>Remove stock OS users (ubuntu, debian, vagrant)</td>
+    <td>bool</td>
+    <td>false</td>
   </tr>
   <tr>
     <td>sudo_user_pass</td>
@@ -42,16 +42,22 @@ Role Variables
   </tr>
   </tr>
     <tr>
-    <td>root_pass</td>
+    <td>accounts_root_pass</td>
     <td>Password of the root user</td>
     <td>str</td>
     <td>''</td>
   </tr>
   <tr>
-    <td>ssh_port</td>
+    <td>accounts_ssh_group</td>
     <td>System group for SSH access</td>
     <td>str</td>
-    <td>sshusers</td>
+    <td>base_layer_ssh_group (or sshusers)</td>
+  </tr>
+    <tr>
+    <td>accounts_list_sudo_users</td>
+    <td>List of dictionaries containing sudo users' details (login, password, ssh_pub_key). For more details, check the defaults/main.yml file.</td>
+    <td>list</td>
+    <td>[]</td>
   </tr>
 </tbody>
 </table>
@@ -60,8 +66,8 @@ Example Playbook
 ----------------
 ```yaml
 - name: Configure user accounts
-  gather_facts: yes
+  gather_facts: true
   hosts: all
   roles:
-    - role: serhii9132.base_layer.users
+    - role: serhii9132.base_layer.accounts
 ```

@@ -1,0 +1,13 @@
+accounts_clean_default_users: false
+accounts_root_pass: ""
+accounts_ssh_group: "{{ base_layer_ssh_group | default('sshusers') }}"
+
+# Example accounts_list_sudo_users:
+#   - login: "user1"
+#     password: "$6$rounds=656000$y..." # Password hash (mkpasswd -m sha-512)
+#     ssh_pub_key: "ssh-ed25519 AAAAC3N..."   # Public SSH key
+#   - login: "user2"
+#     password: "$6$rounds=656000$..."
+#     ssh_pub_key: "ssh-rsa AAAAB3Nza..."
+
+accounts_list_sudo_users: []
