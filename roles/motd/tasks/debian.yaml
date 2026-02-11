@@ -1,13 +1,13 @@
 ---
 - name: Remove disclaimer
   ansible.builtin.file:
-    path: rm /etc/motd
+    path: /etc/motd
     state: absent
 
-- name: Copy 20-sysinfo
+- name: Copy sysinfo
   ansible.builtin.copy:
-    src: 20-sysinfo
-    dest: /etc/update-motd.d/20-sysinfo
+    src: sysinfo
+    dest: /etc/update-motd.d/sysinfo
     owner: root
     group: root
     mode: '744'
