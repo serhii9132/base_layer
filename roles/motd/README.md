@@ -13,7 +13,7 @@ Example Playbook
 ```yaml
 - name: Configure motd
   hosts: all
-  gather_facts: yes
+  gather_facts: true
   roles:
     - serhii9132.base_layer.motd
 ```
