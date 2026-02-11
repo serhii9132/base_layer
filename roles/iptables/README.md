@@ -1,15 +1,10 @@
-### net_security
+### iptables
 
 IPtables configuration:
 ```
 - DROP policy for the FORWARD and INPUT chains
-- allowed SSH and ICMP echo requests from {{ allowed_ip }}
+- allowed SSH and ICMP echo requests from {{ iptables_allowed_ip }}
 - added a LOGGING chain to log malformed packets
-```
-
-Fail2Ban configuration:
-```
-- added jail for ssh
 ```
 
 Role Variables
@@ -25,16 +20,16 @@ Role Variables
 </thead>
 <tbody>
   <tr>
-    <td>allowed_ip</td>
+    <td>iptables_allowed_ip</td>
     <td>Allowed IP for connection</td>
-    <td>str</td>
-    <td>''</td>
+    <td>list</td>
+    <td>base_layer_allowed_ip (or [])</td>
   </tr>
   <tr>
-    <td>ssh_port</td>
+    <td>iptables_ssh_port</td>
     <td>Port sshd</td>
     <td>int</td>
-    <td>2222</td>
+    <td>base_layer_ssh_port (or 2222)</td>
   </tr>
 </tbody>
 </table>
@@ -42,8 +37,8 @@ Role Variables
 Example Playbook
 ----------------
 ```yaml
-- name: Configure firewall
+- name: Configure iptables
   hosts: all
   roles:
-    - role: serhii9132.base_layer.net_security
+    - role: serhii9132.base_layer.iptables
 ```

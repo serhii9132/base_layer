@@ -1,9 +1,9 @@
 [sshd]
 enabled = true
-port = {{ ssh_port }}
+port = {{ fail2ban_ssh_port }}
 filter = sshd
 backend=systemd
 maxretry = 3
 findtime = 60
 bantime = 100d
-ignoreip = {{ allowed_ip }}
+ignoreip = {{ fail2ban_allowed_ip | join(' ') }}

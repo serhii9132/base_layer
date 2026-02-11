@@ -1,0 +1,2 @@
+fail2ban_allowed_ip: "{{ base_layer_allowed_ips | default([]) }}"
+fail2ban_ssh_port: "{{ base_layer_ssh_port | default(2222) }}"
