@@ -2,7 +2,7 @@
 - name: Set hostname
   no_log: true
   ansible.builtin.hostname:
-    name: "{{ hostname }}"
+    name: "{{ hostname_value }}"
 
 - name: Update /etc/hosts from template
   ansible.builtin.template:
