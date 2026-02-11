@@ -5,6 +5,6 @@
     upgrade: "yes"
 
 - name: Install packages
-  loop: "{{ base_pkgs + extra_pkgs }}"
+  loop: "{{ __utilities_core + utilities_extra }}"
   ansible.builtin.apt:
     name: "{{ item }}"

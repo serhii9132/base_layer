@@ -1,4 +1,4 @@
-base_pkgs:
+__utilities_core:
   - htop
   - mc
   - rsync
