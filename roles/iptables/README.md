@@ -3,7 +3,7 @@
 IPtables configuration:
 ```
 - DROP policy for the FORWARD and INPUT chains
-- allowed SSH and ICMP echo requests from {{ iptables_allowed_ip }}
+- allowed SSH and ICMP echo requests from {{ iptables_allowed_ips }}
 - added a LOGGING chain to log malformed packets
 ```
 
@@ -20,10 +20,10 @@ Role Variables
 </thead>
 <tbody>
   <tr>
-    <td>iptables_allowed_ip</td>
+    <td>iptables_allowed_ips</td>
     <td>Allowed IP for connection</td>
     <td>list</td>
-    <td>base_layer_allowed_ip (or [])</td>
+    <td>base_layer_allowed_ips (or [])</td>
   </tr>
   <tr>
     <td>iptables_ssh_port</td>

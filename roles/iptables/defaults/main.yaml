@@ -1,2 +1,2 @@
-iptables_allowed_ip: "{{ base_layer_allowed_ips | default([]) }}"
+iptables_allowed_ips: "{{ base_layer_allowed_ips | default([]) }}"
 iptables_ssh_port: "{{ base_layer_ssh_port | default(2222) }}"
