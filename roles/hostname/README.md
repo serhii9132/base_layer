@@ -14,7 +14,7 @@ Role Variables
 </thead>
 <tbody>
   <tr>
-    <td>hostname</td>
+    <td>hostname_value</td>
     <td>Hostname</td>
     <td>str</td>
     <td>'host'</td>
