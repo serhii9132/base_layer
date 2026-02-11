@@ -3,7 +3,7 @@
 Install Timeshift.
 Find the UUID of the root partition using Ansible gathering and writes it to timeshift.json.
 The folders excluded from the backup are:
-```
+```json
 /swapfile
 /home/**
 /root/**
@@ -22,6 +22,8 @@ The folders excluded from the backup are:
 /var/lib/cni/**
 /var/lib/containerd/**
 /var/lib/docker/**
+/var/lib/jenkins/**
+/etc/wireguard/**
 ```
 
 Example Playbook
@@ -29,7 +31,7 @@ Example Playbook
 ```yaml
 - name: Configure Timeshift
   hosts: all
-  gather_facts: yes
+  gather_facts: true
   roles:
     - serhii9132.base_layer.timeshift
 ```
