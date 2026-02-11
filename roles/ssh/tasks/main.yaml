@@ -1,7 +1,7 @@
 ---
 - name: Find files in sshd_config.d
   ansible.builtin.find:
-    paths: "{{ path_to_config }}"
+    paths: "{{ __ssh_config_path }}"
     file_type: file
   register: list_files
 
@@ -16,11 +16,12 @@
   ansible.builtin.group:
     name: "{{ ssh_group }}"
     state: present
+    system: true
 
-- name: Apply sshd-custom template
+- name: Apply sshd.conf from template
   ansible.builtin.template:
-    src: sshd-custom.j2
-    dest: "{{ path_to_config }}/{{ sshd_config }}"
+    src: sshd.conf.j2
+    dest: "{{ __ssh_config_path }}/{{ __ssh_config_name }}"
     owner: root
     group: root
     mode: '644'

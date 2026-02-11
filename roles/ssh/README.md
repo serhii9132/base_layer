@@ -1,7 +1,7 @@
 ### ssh
 
 Configure the SSH server using a custom configuration.
-Location config: /etc/ssh/sshd_config.d/sshd-custom.conf
+Location config: /etc/ssh/sshd_config.d/sshd.conf
 
 sshd parameters:
 ---------------
@@ -47,13 +47,13 @@ Role Variables
     <td>ssh_port</td>
     <td>Port sshd</td>
     <td>int</td>
-    <td>2222</td>
+    <td>base_layer_ssh_port (or 2222)</td>
   </tr>
   <tr>
     <td>ssh_port</td>
     <td>System group for SSH access</td>
     <td>str</td>
-    <td>sshusers</td>
+    <td>base_layer_ssh_group (or sshusers)</td>
   </tr>
 </tbody>
 </table>

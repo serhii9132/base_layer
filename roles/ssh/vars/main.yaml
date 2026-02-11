@@ -1,2 +1,2 @@
-sshd_config: sshd-custom.conf
-path_to_config: /etc/ssh/sshd_config.d
+__ssh_config_path: /etc/ssh/sshd_config.d
+__ssh_config_name: sshd.conf
