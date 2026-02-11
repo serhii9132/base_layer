@@ -1,0 +1,10 @@
+__accounts_histsize: 10000
+__accounts_histfilesize: 10000
+__accounts_histtimeformat: "%d.%m.%Y %H:%M:%S - "
+__accounts_histcontrol: "ignoreboth:erasedups"
+__accounts_prompt_command: "history -a"
+
+__accounts_users_to_remove:
+ - debian
+ - ubuntu
+ - vagrant
