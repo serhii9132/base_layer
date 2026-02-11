@@ -1,4 +1,4 @@
-script_aliases:
+__common_script_aliases:
   - apt-aliases.sh
   - common-aliases.sh
   - run-as-root.sh
