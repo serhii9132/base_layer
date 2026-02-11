@@ -36,3 +36,8 @@ First stable release of the collection.
 - net_security role
 - users role
 - packages role
+
+## [1.0.4] - 2026-02-11
+
+### Changed
+- iptables role: Refactor code

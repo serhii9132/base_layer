@@ -6,10 +6,10 @@
     jump: ACCEPT
 
 - name: Configure firewall rules for trusted IPs
-  when: iptables_allowed_ip | length > 0
+  when: iptables_allowed_ips | length > 0
   block:
     - name: Allow new connections via SSH
-      loop: "{{ iptables_allowed_ip }}"
+      loop: "{{ iptables_allowed_ips }}"
       ansible.builtin.iptables:
         chain: INPUT
         protocol: tcp
@@ -19,7 +19,7 @@
         source: "{{ item }}"
 
     - name: Allow ICMP echo requests
-      loop: "{{ iptables_allowed_ip }}"
+      loop: "{{ iptables_allowed_ips }}"
       ansible.builtin.iptables:
         chain: INPUT
         protocol: icmp

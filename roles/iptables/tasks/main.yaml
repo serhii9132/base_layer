@@ -1,4 +1,4 @@
 ---
 - name: Import iptables.yaml
   ansible.builtin.import_tasks: iptables.yaml
-  when: iptables_allowed_ip | length > 0
+  when: iptables_allowed_ips | length > 0
