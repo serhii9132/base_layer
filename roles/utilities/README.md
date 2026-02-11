@@ -1,6 +1,6 @@
-### packages
+### utilities
 
-Install packages.
+Installs a set of essential system administration utilities.
 By default, the role installs:
 ```
 - mc
@@ -21,7 +21,7 @@ Role Variables
 </thead>
 <tbody>
   <tr>
-    <td>extra_pkgs</td>
+    <td>utilities_extra</td>
     <td>A list of additional packages</td>
     <td>list</td>
     <td>[]</td>
@@ -32,9 +32,9 @@ Role Variables
 Example Playbook
 ----------------
 ```yaml
-- name: Install packages
+- name: Set up system utilities
   hosts: all
-  gather_facts: yes
+  gather_facts: true
   roles:
-    - serhii9132.base_layer.packages
+    - serhii9132.base_layer.utilities
 ```
