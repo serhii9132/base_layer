@@ -1,0 +1,4 @@
+---
+- name: Import fail2ban
+  ansible.builtin.import_tasks: fail2ban.yaml
+  when: fail2ban_allowed_ip | length > 0

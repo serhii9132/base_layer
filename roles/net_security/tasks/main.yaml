@@ -1,8 +1,0 @@
-- name: Apply firewall settings
-  when: allowed_ip | length > 0
-  block:
-    - name: Import iptables.yaml
-      ansible.builtin.import_tasks: iptables.yaml
-
-    - name: Import fail2ban
-      ansible.builtin.import_tasks: fail2ban.yaml

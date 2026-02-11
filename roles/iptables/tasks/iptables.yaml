@@ -1,0 +1,73 @@
+---
+- name: Allow related and established connections
+  ansible.builtin.iptables:
+    chain: INPUT
+    ctstate: ESTABLISHED,RELATED
+    jump: ACCEPT
+
+- name: Configure firewall rules for trusted IPs
+  when: iptables_allowed_ip | length > 0
+  block:
+    - name: Allow new connections via SSH
+      loop: "{{ iptables_allowed_ip }}"
+      ansible.builtin.iptables:
+        chain: INPUT
+        protocol: tcp
+        destination_port: "{{ iptables_ssh_port }}"
+        ctstate: NEW
+        jump: ACCEPT
+        source: "{{ item }}"
+
+    - name: Allow ICMP echo requests
+      loop: "{{ iptables_allowed_ip }}"
+      ansible.builtin.iptables:
+        chain: INPUT
+        protocol: icmp
+        jump: ACCEPT
+        source: "{{ item }}"
+        icmp_type: 8
+
+- name: Add firewall rules to LOGGING chain
+  block:
+    - name: Create the user-defined chain LOGGING
+      ansible.builtin.iptables:
+        chain: "{{ __iptables_name_logging_chain }}"
+        chain_management: true
+
+    - name: Add a redirection rule to LOGGING
+      ansible.builtin.iptables:
+        chain: INPUT
+        jump: "{{ __iptables_name_logging_chain }}"
+
+    - name: Log invalid packets
+      ansible.builtin.iptables:
+        chain: "{{ __iptables_name_logging_chain }}"
+        action: append
+        limit: 2/min
+        limit_burst: 4
+        log_prefix: "IPTABLES INVALID:  "
+        ctstate: INVALID
+
+    - name: Log dropped packets
+      ansible.builtin.iptables:
+        chain: "{{ __iptables_name_logging_chain }}"
+        action: append
+        limit: 2/min
+        limit_burst: 4
+        log_prefix: "IPTABLES DROP:  "
+
+- name: Set the policy for the INPUT chain to DROP
+  ansible.builtin.iptables:
+    chain: INPUT
+    policy: DROP
+
+- name: Set the policy for the FORWARD chain to DROP
+  ansible.builtin.iptables:
+    chain: FORWARD
+    policy: DROP
+
+- name: Install iptables-persistent
+  ansible.builtin.apt:
+    name: iptables-persistent
+    update_cache: true
+    state: present
