@@ -1,0 +1,54 @@
+---
+- name: Converge
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: "Import role utilities"
+      ansible.builtin.import_role:
+        name: utilities
+      tags: utilities
+
+    - name: "Import role common"
+      ansible.builtin.import_role:
+        name: common
+      tags: common
+
+    - name: "Import role git"
+      ansible.builtin.import_role:
+        name: git
+      tags: git
+
+    - name: "Import role hostname"
+      ansible.builtin.import_role:
+        name: hostname
+      tags: hostname
+
+    - name: "Import role motd"
+      ansible.builtin.import_role:
+        name: motd
+      tags: motd
+
+    - name: "Import role ssh"
+      ansible.builtin.import_role:
+        name: ssh
+      tags: ssh
+
+    - name: "Import role timeshift"
+      ansible.builtin.import_role:
+        name: timeshift
+      tags: timeshift
+
+    - name: "Import role accounts"
+      ansible.builtin.import_role:
+        name: accounts
+      tags: accounts
+
+    - name: "Import role iptables"
+      ansible.builtin.import_role:
+        name: iptables
+      tags: iptables
+
+    - name: "Import role fail2ban"
+      ansible.builtin.import_role:
+        name: fail2ban
+      tags: fail2ban

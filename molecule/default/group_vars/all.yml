@@ -1,0 +1,23 @@
+base_layer_ssh_port: 2222
+base_layer_allowed_ips:
+  - 192.168.64.1
+base_layer_ssh_group: ssh_users
+
+accounts_clean_default_users: true
+accounts_root_pass: '$6$GXziCNW2.LJZ0Cg7$hxG5nm.eDdFKSueUxKOFMPNqEMTX4hBbOYZHfKHD4NMYFIraiSIWno2cQYKmKDNAqK5lN2tVKlt.EJd2DnpU2/'
+accounts_list_sudo_users:
+  - login: user1
+    password: '$6$GXziCNW2.LJZ0Cg7$hxG5nm.eDdFKSueUxKOFMPNqEMTX4hBbOYZHfKHD4NMYFIraiSIWno2cQYKmKDNAqK5lN2tVKlt.EJd2DnpU2/'
+    ssh_pub_key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKlrpJa/CXzWSpojq8iXf8omdkiiP1ali+pdAlxjtCEw test
+  - login: user2
+    password: '$6$GXziCNW2.LJZ0Cg7$hxG5nm.eDdFKSueUxKOFMPNqEMTX4hBbOYZHfKHD4NMYFIraiSIWno2cQYKmKDNAqK5lN2tVKlt.EJd2DnpU2/'
+    ssh_pub_key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKlrpJa/CXzWSpojq8iXf8omdkiiP1ali+pdAlxjtCEw test
+
+git_user_name: "test user"
+git_user_email: "testuser@mail.com"
+
+hostname_value: pve-vm
+
+utilities_extra:
+  - mtr
+  - dnsutils
