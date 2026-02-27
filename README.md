@@ -10,8 +10,8 @@ Collection variables
     <th>Name</th>
     <th>Comment</th>
     <th>Type</th>
-    <th>Default Value</th>
-    <th>Used by Roles</th>
+    <th>Default value</th>
+    <th>Used by roles</th>
   </tr>
 </thead>
 <tbody>
@@ -33,7 +33,7 @@ Collection variables
     <td>base_layer_ssh_group</td>
     <td>The name of the system group created by the ssh role</td>
     <td>str</td>
-    <td>ssh_group</td>
+    <td>ssh_users</td>
     <td>ssh, accounts</td>
   </tr>
 </tbody>
@@ -50,5 +50,5 @@ base_layer_allowed_ip:
  - 192.168.1.1
  - 192.168.1.2
  - 192.168.1.3
-base_layer_ssh_group: ssh_groups
+base_layer_ssh_group: ssh_users
 ```

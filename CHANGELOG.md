@@ -41,3 +41,13 @@ First stable release of the collection.
 
 ### Changed
 - iptables role: Refactor code
+
+## [1.0.5] - 2026-02-27
+
+### Added:
+- Molecule tests
+- iptables: added a task to allow loopback traffic
+
+### Changed
+- utilities role: Refactor code
+- common role: Refactor code
