@@ -3,7 +3,7 @@
   community.general.timezone:
     name: Europe/Kyiv
 
-- name: Copy zero_space scripts for VirtualBox VMs
+- name: Copy zero_space script for VirtualBox and VMware VMs
   ansible.builtin.copy:
     src: zero_space
     dest: /usr/local/bin/zero_space
@@ -12,7 +12,7 @@
     mode: '755'
   when: |
     ansible_virtualization_type == 'virtualbox' or
-    ansible_virtualization_type == 'vmware'
+    ansible_virtualization_type == 'VMware'
 
 - name: Copy alias scripts
   loop: "{{ __common_script_aliases }}"
@@ -21,4 +21,4 @@
     dest: "/etc/profile.d/{{ item }}"
     owner: root
     group: root
-    mode: '755'
+    mode: '644'
