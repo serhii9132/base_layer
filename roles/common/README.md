@@ -2,7 +2,7 @@
 Performs common tasks for configuration:
 ```
 - timezone to Europe/Kyiv
-- deploys the `zero_space` script for VirtualBox VMs 
+- deploys the `zero_space` script for VirtualBox and VMware VMs
 - adds shell aliases to /etc/profile.d
 ```
 
