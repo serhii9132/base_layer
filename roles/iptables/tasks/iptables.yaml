@@ -5,6 +5,12 @@
     ctstate: ESTABLISHED,RELATED
     jump: ACCEPT
 
+- name: Allow loopback traffic
+  ansible.builtin.iptables:
+    chain: INPUT
+    in_interface: lo
+    jump: ACCEPT
+
 - name: Configure firewall rules for trusted IPs
   when: iptables_allowed_ips | length > 0
   block:

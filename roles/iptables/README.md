@@ -4,6 +4,7 @@ IPtables configuration:
 ```
 - DROP policy for the FORWARD and INPUT chains
 - allowed SSH and ICMP echo requests from {{ iptables_allowed_ips }}
+- allowed loopback traffic
 - added a LOGGING chain to log malformed packets
 ```
 
