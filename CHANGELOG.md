@@ -51,3 +51,8 @@ First stable release of the collection.
 ### Changed
 - utilities role: Refactor code
 - common role: Refactor code
+
+## [1.0.6] - 2026-03-08
+
+### Changed
+- ssh role: Refactor code

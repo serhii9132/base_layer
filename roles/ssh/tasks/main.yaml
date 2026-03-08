@@ -3,14 +3,14 @@
   ansible.builtin.find:
     paths: "{{ __ssh_config_path }}"
     file_type: file
-  register: list_files
+  register: __ssh_list_files
 
 - name: Delete the contents of sshd_config.d
-  when: list_files.matched > 0
+  when: __ssh_list_files.matched > 0
   ansible.builtin.file:
-    path: "{{ item }}"
+    path: "{{ item.path }}"
     state: absent
-  loop: "{{ list_files.files }}"
+  loop: "{{ __ssh_list_files.files }}"
 
 - name: Create ssh group
   ansible.builtin.group:
