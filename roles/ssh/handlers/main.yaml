@@ -3,3 +3,13 @@
   ansible.builtin.service:
     name: ssh
     state: restarted
+  when: >
+    (ansible_facts.distribution == 'Ubuntu' and ansible_facts.distribution_version is version('22.04', 'eq')) or
+    (ansible_facts.distribution == 'Debian' and ansible_facts.distribution_major_version is version('12', '>='))
+
+- name: Restart ssh.socket
+  ansible.builtin.systemd_service:
+    name: ssh.socket
+    state: restarted
+    daemon_reload: true
+  when: ansible_facts.distribution == 'Ubuntu' and ansible_facts.distribution_version is version('24.04', '>=')

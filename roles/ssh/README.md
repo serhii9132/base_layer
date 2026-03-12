@@ -62,6 +62,7 @@ Example Playbook
 ----------------
 ```yaml
 - name: Configure SSH
+  gather_facts: true
   hosts: all
   roles:
     - role: serhii9132.base_layer.ssh

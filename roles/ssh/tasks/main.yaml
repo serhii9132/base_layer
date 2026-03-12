@@ -24,5 +24,8 @@
     dest: "{{ __ssh_config_path }}/{{ __ssh_config_name }}"
     owner: root
     group: root
-    mode: '644'
-  notify: Restart ssh service
+    mode: '600'
+    validate: /usr/sbin/sshd -t -f %s
+  notify:
+    - Restart ssh service
+    - Restart ssh.socket
