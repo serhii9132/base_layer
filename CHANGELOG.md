@@ -56,3 +56,9 @@ First stable release of the collection.
 
 ### Changed
 - ssh role: Refactor code
+
+## [1.0.7] - 2026-03-12
+
+### Changed
+- ssh role: Refactor code
+- Molecule: switch to dynamic OS provisioning with DHCP and env variables
