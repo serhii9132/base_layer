@@ -2,30 +2,14 @@
 driver:
   name: molecule-proxmox
   options:
-    proxmox_secrets: $HOME/.molecule-proxmox/proxmox-secrets.yml
+    proxmox_secrets: $HOME/.molecule/proxmox-secrets.yml
     full: true
 
 platforms:
-  - name: molecule-debian-13
-    newid: 1000
-    template_name: debian-13-tmp
+  - name: "molecule-${os}"
+    template_name: ${os}-tmp
     ipconfig:
-      ipconfig0: 'ip=192.168.64.150/24,gw=192.168.64.2'
-  - name: molecule-debian-12
-    newid: 1001
-    template_name: debian-12-tmp
-    ipconfig:
-      ipconfig0: 'ip=192.168.64.151/24,gw=192.168.64.2'
-  - name: molecule-ubuntu-22.04
-    newid: 1002
-    template_name: ubuntu-22.04-tmp
-    ipconfig:
-      ipconfig0: 'ip=192.168.64.152/24,gw=192.168.64.2'
-  - name: molecule-ubuntu-24.04
-    newid: 1003
-    template_name: ubuntu-24.04-tmp
-    ipconfig:
-      ipconfig0: 'ip=192.168.64.153/24,gw=192.168.64.2'
+      ipconfig0: 'ip=dhcp'
 
 provisioner:
   name: ansible
