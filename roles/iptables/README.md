@@ -32,6 +32,24 @@ Role Variables
     <td>int</td>
     <td>base_layer_ssh_port (or 2222)</td>
   </tr>
+  <tr>
+    <td>iptables_name_logging_chain</td>
+    <td>Name of the user-defined chain for logging</td>
+    <td>str</td>
+    <td>LOGGING</td>
+  </tr>
+  <tr>
+    <td>iptables_logging_limit</td>
+    <td>Max average match rate per second/minute</td>
+    <td>str</td>
+    <td>4/min</td>
+  </tr>
+  <tr>
+    <td>iptables_logging_limit_burst</td>
+    <td>Specifies the maximum burst before the above limit kicks in</td>
+    <td>str</td>
+    <td>6</td>
+  </tr>
 </tbody>
 </table>
 
