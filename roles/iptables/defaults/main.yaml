@@ -1,2 +1,6 @@
 iptables_allowed_ips: "{{ base_layer_allowed_ips | default([]) }}"
 iptables_ssh_port: "{{ base_layer_ssh_port | default(2222) }}"
+
+iptables_name_logging_chain: LOGGING
+iptables_logging_limit: 4/min
+iptables_logging_limit_burst: 6
