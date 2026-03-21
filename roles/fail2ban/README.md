@@ -29,6 +29,24 @@ Role Variables
     <td>int</td>
     <td>2222</td>
   </tr>
+  <tr>
+    <td>fail2ban_bantime</td>
+    <td>Duration of the ban for an offending IP</td>
+    <td>str</td>
+    <td>24h</td>
+  </tr>
+  <tr>
+    <td>fail2ban_maxretry</td>
+    <td>Number of failed login attempts allowed before triggering a ban</td>
+    <td>int</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>fail2ban_findtime</td>
+    <td>Time window during which the failed attempts must occur</td>
+    <td>str</td>
+    <td>1h</td>
+  </tr>
 </tbody>
 </table>
 
