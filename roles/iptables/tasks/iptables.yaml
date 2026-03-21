@@ -38,29 +38,29 @@
   block:
     - name: Create the user-defined chain LOGGING
       ansible.builtin.iptables:
-        chain: "{{ __iptables_name_logging_chain }}"
+        chain: "{{ iptables_name_logging_chain }}"
         chain_management: true
 
     - name: Add a redirection rule to LOGGING
       ansible.builtin.iptables:
         chain: INPUT
-        jump: "{{ __iptables_name_logging_chain }}"
+        jump: "{{ iptables_name_logging_chain }}"
 
     - name: Log invalid packets
       ansible.builtin.iptables:
-        chain: "{{ __iptables_name_logging_chain }}"
+        chain: "{{ iptables_name_logging_chain }}"
         action: append
-        limit: "{{ __iptables_logging_limit }}"
-        limit_burst: "{{ __iptables_logging_limit_burst }}"
+        limit: "{{ iptables_logging_limit }}"
+        limit_burst: "{{ iptables_logging_limit_burst }}"
         log_prefix: "IPTABLES INVALID:  "
         ctstate: INVALID
 
     - name: Log dropped packets
       ansible.builtin.iptables:
-        chain: "{{ __iptables_name_logging_chain }}"
+        chain: "{{ iptables_name_logging_chain }}"
         action: append
-        limit: "{{ __iptables_logging_limit }}"
-        limit_burst: "{{ __iptables_logging_limit_burst }}"
+        limit: "{{ iptables_logging_limit }}"
+        limit_burst: "{{ iptables_logging_limit_burst }}"
         log_prefix: "IPTABLES DROP:  "
 
 - name: Set the policy for the INPUT chain to DROP
