@@ -62,3 +62,9 @@ First stable release of the collection.
 ### Changed
 - ssh role: Refactor code
 - Molecule: switch to dynamic OS provisioning with DHCP and env variables
+
+## [1.0.8] - 2026-03-21
+
+### Added
+- iptables role: limits to the user-defined logging chain
+- fail2ban role: ban parameters
