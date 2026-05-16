@@ -17,6 +17,7 @@
     name: "{{ ssh_group }}"
     state: present
     system: true
+  when: not ssh_is_root_allowed | bool
 
 - name: Apply sshd.conf from template
   ansible.builtin.template:

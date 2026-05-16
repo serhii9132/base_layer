@@ -8,10 +8,13 @@ Protocol 2
 LogLevel INFO
 
 LoginGraceTime 30
-PermitRootLogin no
 MaxAuthTries 3
-
+{% if ssh_is_root_allowed %}
+PermitRootLogin yes
+{% else %}
+PermitRootLogin no
 AllowGroups {{ ssh_group }}
+{% endif %}
 
 PubkeyAuthentication yes
 

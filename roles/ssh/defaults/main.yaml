@@ -1,2 +1,3 @@
 ssh_port: "{{ base_layer_ssh_port | default(2222) }}"
 ssh_group: "{{ base_layer_ssh_group | default('sshusers') }}"
+ssh_is_root_allowed: false
