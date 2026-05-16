@@ -4,19 +4,23 @@ base_layer_allowed_ips:
 base_layer_ssh_group: ssh_users
 
 accounts_clean_default_users: true
-accounts_root_pass: '$6$GXziCNW2.LJZ0Cg7$hxG5nm.eDdFKSueUxKOFMPNqEMTX4hBbOYZHfKHD4NMYFIraiSIWno2cQYKmKDNAqK5lN2tVKlt.EJd2DnpU2/'
+accounts_root_pass: '$6$7XwAldX4LYYZOTdf$HXV3drSH2aO1NIkuuyk4oLc0SeKVVJmjkOiPzc3Qfdy8G2aRu6pAyvYpg1uv/UAFrOXutAxxBCqie/JDiAMok.' # vagrant
+accounts_root_ssh_pub_key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKlrpJa/CXzWSpojq8iXf8omdkiiP1ali+pdAlxjtCEw test
+
 accounts_list_sudo_users:
   - login: user1
-    password: '$6$GXziCNW2.LJZ0Cg7$hxG5nm.eDdFKSueUxKOFMPNqEMTX4hBbOYZHfKHD4NMYFIraiSIWno2cQYKmKDNAqK5lN2tVKlt.EJd2DnpU2/'
+    password: '$6$7XwAldX4LYYZOTdf$HXV3drSH2aO1NIkuuyk4oLc0SeKVVJmjkOiPzc3Qfdy8G2aRu6pAyvYpg1uv/UAFrOXutAxxBCqie/JDiAMok.'
     ssh_pub_key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKlrpJa/CXzWSpojq8iXf8omdkiiP1ali+pdAlxjtCEw test
   - login: user2
-    password: '$6$GXziCNW2.LJZ0Cg7$hxG5nm.eDdFKSueUxKOFMPNqEMTX4hBbOYZHfKHD4NMYFIraiSIWno2cQYKmKDNAqK5lN2tVKlt.EJd2DnpU2/'
+    password: '$6$7XwAldX4LYYZOTdf$HXV3drSH2aO1NIkuuyk4oLc0SeKVVJmjkOiPzc3Qfdy8G2aRu6pAyvYpg1uv/UAFrOXutAxxBCqie/JDiAMok.'
     ssh_pub_key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKlrpJa/CXzWSpojq8iXf8omdkiiP1ali+pdAlxjtCEw test
 
 git_user_name: "test user"
 git_user_email: "testuser@mail.com"
 
 hostname_value: pve-vm
+
+ssh_is_root_allowed: true
 
 utilities_extra:
   - mtr
