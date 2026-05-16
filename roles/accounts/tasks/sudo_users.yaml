@@ -1,0 +1,26 @@
+---
+- name: Create ssh group
+  ansible.builtin.group:
+    name: "{{ accounts_ssh_group }}"
+    state: present
+    system: true
+
+- name: Create sudo users
+  no_log: true
+  loop: "{{ accounts_list_sudo_users }}"
+  ansible.builtin.user:
+    name: "{{ item.login }}"
+    password: "{{ item.password }}"
+    shell: /bin/bash
+    groups:
+      - sudo
+      - "{{ accounts_ssh_group }}"
+
+- name: Add key to sudo users
+  no_log: true
+  loop: "{{ accounts_list_sudo_users }}"
+  ansible.posix.authorized_key:
+    user: "{{ item.login }}"
+    state: present
+    key: "{{ item.ssh_pub_key }}"
+    exclusive: true

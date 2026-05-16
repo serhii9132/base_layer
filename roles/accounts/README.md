@@ -1,12 +1,13 @@
-### users
+### accounts
 
 The role configures the system by:
 ```
 - removes the default users: debian and ubuntu (CloudInit images) and vagrant (Vagrant images)
-- creates the ssh_users group
+- creates the system group for SSH access
 - creates a new users with sudo persmissions
 - adds the public SSH key to authorized_keys (if the key is not already present)
-- updates password for root
+- updates password for root.
+- adds the public SSH key for root, in case if only this user is used to log in 
 - deploys a customized .bashrc configuration to the users' home directory
 ```
 
@@ -28,22 +29,17 @@ Role Variables
     <td>bool</td>
     <td>false</td>
   </tr>
-  <tr>
-    <td>sudo_user_pass</td>
-    <td>Password of the user with sudo privileges</td>
-    <td>str</td>
-    <td>''</td>
   </tr>
-  <tr>
-    <td>ssh_pub_key</td>
-    <td>Public SSH key of a user with sudo privileges</td>
+    <tr>
+    <td>accounts_root_pass</td>
+    <td>Password of the root user</td>
     <td>str</td>
     <td>''</td>
   </tr>
   </tr>
     <tr>
-    <td>accounts_root_pass</td>
-    <td>Password of the root user</td>
+    <td>accounts_root_ssh_pub_key</td>
+    <td>Public SSH key of the root user</td>
     <td>str</td>
     <td>''</td>
   </tr>
