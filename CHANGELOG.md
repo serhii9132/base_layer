@@ -68,3 +68,9 @@ First stable release of the collection.
 ### Added
 - iptables role: limits to the user-defined logging chain
 - fail2ban role: ban parameters
+
+## [1.0.9] - 2026-05-16
+
+### Changed
+- ssh role: toggle to enable/disable root access
+- accounts role: Refactor code
