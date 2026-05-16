@@ -7,12 +7,6 @@
   loop: "{{ __accounts_users_to_remove }}"
   when: accounts_clean_default_users | bool
 
-- name: Create ssh group
-  ansible.builtin.group:
-    name: "{{ accounts_ssh_group }}"
-    state: present
-    system: true
-
 - name: Update root password
   no_log: true
   ansible.builtin.user:
@@ -20,35 +14,24 @@
     password: "{{ accounts_root_pass }}"
   when: accounts_root_pass | length > 0
 
-- name: Create a new user
+- name: Configure root SSH key
   no_log: true
-  loop: "{{ accounts_list_sudo_users }}"
-  ansible.builtin.user:
-    name: "{{ item.login }}"
-    password: "{{ item.password }}"
-    shell: /bin/bash
-    groups:
-      - sudo
-      - "{{ accounts_ssh_group }}"
-  when: accounts_list_sudo_users | length > 0
-
-- name: Add key to user
-  no_log: true
-  loop: "{{ accounts_list_sudo_users }}"
   ansible.posix.authorized_key:
-    user: "{{ item.login }}"
+    user: root
     state: present
-    key: "{{ item.ssh_pub_key }}"
+    key: "{{ accounts_root_ssh_pub_key }}"
     exclusive: true
+  when: accounts_list_sudo_users | length == 0
+
+- name: Import sudo_users.yaml
+  ansible.builtin.import_tasks: sudo_users.yaml
   when: accounts_list_sudo_users | length > 0
 
-- name: Deploy custom .bashrc for root and sudo users
-  vars:
-    user_home_dir: "{{ '/root' if item.login == 'root' else '/home/' + item.login }}"
+- name: Apply .bashrc from template for all users
   ansible.builtin.template:
     src: bashrc.j2
-    dest: "{{ user_home_dir }}/.bashrc"
+    dest: "{{ (item.login == 'root') | ternary('/root', '/home/' ~ item.login) }}/.bashrc"
     owner: "{{ item.login }}"
     group: "{{ item.login }}"
-    mode: '644'
+    mode: '0644'
   loop: "{{ [{'login': 'root'}] + accounts_list_sudo_users }}"
