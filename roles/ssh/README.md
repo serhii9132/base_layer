@@ -50,8 +50,14 @@ Role Variables
     <td>base_layer_ssh_port (or 2222)</td>
   </tr>
   <tr>
-    <td>ssh_port</td>
-    <td>System group for SSH access</td>
+    <td>ssh_is_root_allowed</td>
+    <td>Enable or disable root SSH login</td>
+    <td>bool</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>ssh_group</td>
+    <td>Name of system group for SSH access if access via root is disabled</td>
     <td>str</td>
     <td>base_layer_ssh_group (or sshusers)</td>
   </tr>
