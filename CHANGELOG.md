@@ -74,3 +74,9 @@ First stable release of the collection.
 ### Changed
 - ssh role: toggle to enable/disable root access
 - accounts role: Refactor code
+
+## [1.0.10] - 2026-06-12
+
+### Changed
+- ssh role: fix for removing cloudinit ssh configs
+- Molecule: code refactor. reduce ansible output verbosity
