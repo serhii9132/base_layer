@@ -1,16 +1,8 @@
 ---
-- name: Find files in sshd_config.d
-  ansible.builtin.find:
-    paths: "{{ __ssh_config_path }}"
-    file_type: file
-  register: __ssh_list_files
-
-- name: Delete the contents of sshd_config.d
-  when: __ssh_list_files.matched > 0
+- name: Delete custom Cloudinit config
   ansible.builtin.file:
-    path: "{{ item.path }}"
+    path: "{{ __ssh_config_path }}/60-cloudimg-settings.conf"
     state: absent
-  loop: "{{ __ssh_list_files.files }}"
 
 - name: Create ssh group
   ansible.builtin.group:
