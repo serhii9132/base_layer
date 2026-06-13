@@ -14,7 +14,5 @@ platforms:
 provisioner:
   name: ansible
   env:
-    ANSIBLE_VERBOSITY: 3
+    ANSIBLE_VERBOSITY: 2
     ANSIBLE_ROLES_PATH: "../../roles"
-  lint:
-    name: "ansible-lint"
