@@ -1,4 +1,5 @@
 *.tar.gz
 .ansible
 .vscode
+group_vars
 logs

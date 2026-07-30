@@ -80,3 +80,12 @@ First stable release of the collection.
 ### Changed
 - ssh role: fix for removing cloudinit ssh configs
 - Molecule: code refactor. reduce ansible output verbosity
+
+## [1.0.11] - 2026-07-30
+
+### Added:
+- bash_aliases role
+
+### Changed
+- common role: removed "Copy alias scripts" task; refactor code
+- accounts role: refactor code
