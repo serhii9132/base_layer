@@ -28,6 +28,7 @@
   when: accounts_list_sudo_users | length > 0
 
 - name: Apply .bashrc from template for all users
+  no_log: true
   ansible.builtin.template:
     src: bashrc.j2
     dest: "{{ (item.login == 'root') | ternary('/root', '/home/' ~ item.login) }}/.bashrc"
