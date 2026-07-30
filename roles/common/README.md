@@ -1,10 +1,13 @@
 ### common
-Performs common tasks for configuration:
+The role performs the configuration:
 ```
-- timezone to Europe/Kyiv
-- deploys the `zero_space` script for VirtualBox and VMware VMs
-- adds shell aliases to /etc/profile.d
+- timezone
+- deploys the `zero_space` script for VirtualBox and VMware VMs (used to clear the free space before compression)
 ```
+
+Role Variables
+--------------
+The role variables and their descriptions can be found [here](https://github.com/serhii9132/base_layer/blob/main/roles/common/defaults/main.yaml)
 
 Example Playbook
 ----------------

@@ -1,7 +1,7 @@
 ---
 - name: Set timezone
   community.general.timezone:
-    name: Europe/Kyiv
+    name: "{{ common_timezone }}"
 
 - name: Copy zero_space script for VirtualBox and VMware VMs
   ansible.builtin.copy:
@@ -13,12 +13,3 @@
   when: |
     ansible_virtualization_type == 'virtualbox' or
     ansible_virtualization_type == 'VMware'
-
-- name: Copy alias scripts
-  loop: "{{ __common_script_aliases }}"
-  ansible.builtin.copy:
-    src: "{{ item }}"
-    dest: "/etc/profile.d/{{ item }}"
-    owner: root
-    group: root
-    mode: '644'
