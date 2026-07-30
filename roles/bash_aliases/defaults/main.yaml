@@ -1,0 +1,12 @@
+---
+# List of users (can also specify root)
+bash_aliases_users: []
+
+# Example:
+# bash_aliases_list:
+#   ll: "ls -alF"
+#   la: "ls -A"
+#   l: "ls -CF"
+#   up: "sudo apt update && sudo apt upgrade -y"
+#   grep: "grep --color=auto"
+bash_aliases_list: {}
