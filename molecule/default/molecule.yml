@@ -16,3 +16,5 @@ provisioner:
   env:
     ANSIBLE_VERBOSITY: 2
     ANSIBLE_ROLES_PATH: "../../roles"
+    ANSIBLE_STDOUT_CALLBACK: yaml
+    ANSIBLE_LOAD_CALLBACK_PLUGINS: 1
