@@ -52,3 +52,8 @@
       ansible.builtin.import_role:
         name: fail2ban
       tags: fail2ban
+
+    - name: "Import role bash_aliases"
+      ansible.builtin.import_role:
+        name: bash_aliases
+      tags: bash_aliases
