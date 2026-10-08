@@ -1,7 +1,7 @@
 # CHANGELOG.md
 
 ## [1.0.0] - 2025-11-11
-First stable release of the collection.
+First stable release of the collection
 
 ## [1.0.1] - 2025-11-24
 
@@ -89,3 +89,15 @@ First stable release of the collection.
 ### Changed
 - common role: removed "Copy alias scripts" task; refactor code
 - accounts role: refactor code
+
+## [1.0.12] - 2026-10-08
+
+### Added:
+- timezone role
+- zero_space role
+
+### Changed
+- iptables role: added ipset
+
+### Removed
+- common role
