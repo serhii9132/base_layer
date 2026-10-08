@@ -8,10 +8,15 @@
         name: utilities
       tags: utilities
 
-    - name: "Import role common"
+    - name: "Import role timezone"
       ansible.builtin.import_role:
-        name: common
-      tags: common
+        name: timezone
+      tags: timezone
+
+    - name: "Import role zero_space"
+      ansible.builtin.import_role:
+        name: zero_space
+      tags: zero_space
 
     - name: "Import role git"
       ansible.builtin.import_role:
