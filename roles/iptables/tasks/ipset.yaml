@@ -15,6 +15,7 @@
   ansible.builtin.command:
     cmd: ipset create "{{ iptables_set_name }}" "{{ iptables_set_type }}"
   when: __ipset_status.rc != 0
+  changed_when: true
 
 - name: Get current ipset configuration
   ansible.builtin.command:
@@ -27,6 +28,7 @@
     cmd: ipset add "{{ iptables_set_name }}" "{{ item }}"
   loop: "{{ iptables_allowed_ips }}"
   when: ('add ' ~ iptables_set_name ~ ' ' ~ item) not in __ipset_save.stdout
+  changed_when: true
 
 - name: Install ipset-persistent
   ansible.builtin.apt:
