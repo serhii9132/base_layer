@@ -7,9 +7,10 @@ echo "  1) debian-12"
 echo "  2) debian-13"
 echo "  3) ubuntu-22.04"
 echo "  4) ubuntu-24.04"
+echo "  5) ubuntu-26.04"
 echo ""
 
-read -p "Enter a number (1-4): " choice
+read -p "Enter a number (1-5): " choice
 
 case $choice in
     1)
@@ -24,8 +25,11 @@ case $choice in
     4)
         export os="ubuntu-24.04"
         ;;
+    5)
+        export os="ubuntu-26.04"
+        ;;
     *)
-        echo "Error: Invalid input. Please enter a number from 1 to 4."
+        echo "Error: Invalid input. Please enter a number from 1 to 5."
         exit 1
         ;;
 esac
