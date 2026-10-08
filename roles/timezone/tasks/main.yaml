@@ -1,0 +1,16 @@
+---
+- name: Verify the requested timezone is valid
+  ansible.builtin.command:
+    cmd: "timedatectl list-timezones"
+  register: __timezone_list_valid
+  changed_when: false
+
+- name: Fail if timezone is not recognized
+  ansible.builtin.assert:
+    that:
+      - timezone_value in __timezone_list_valid.stdout_lines
+    fail_msg: "{{ timezone_value }} is not a valid timezone"
+
+- name: Set timezone
+  community.general.timezone:
+    name: "{{ timezone_value }}"
