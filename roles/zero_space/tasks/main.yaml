@@ -1,0 +1,9 @@
+---
+- name: Copy zero_space script
+  ansible.builtin.copy:
+    src: zero_space
+    dest: /usr/local/bin/zero_space
+    owner: root
+    group: root
+    mode: '755'
+  when: ansible_virtualization_type == 'VMware'
