@@ -1,4 +1,6 @@
 ---
-- name: Import iptables.yaml
-  ansible.builtin.import_tasks: iptables.yaml
-  when: iptables_allowed_ips | length > 0
+- name: Import ipset.yaml
+  ansible.builtin.import_tasks: ipset.yaml
+  when:
+    - iptables_set_name | length > 0
+    - iptables_allowed_ips | length > 0

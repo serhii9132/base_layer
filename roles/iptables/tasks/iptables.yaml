@@ -1,4 +1,9 @@
 ---
+- name: Install iptables
+  ansible.builtin.apt:
+    name: iptables
+    update_cache: true
+
 - name: Allow related and established connections
   ansible.builtin.iptables:
     chain: INPUT
@@ -11,27 +16,24 @@
     in_interface: lo
     jump: ACCEPT
 
-- name: Configure firewall rules for trusted IPs
-  when: iptables_allowed_ips | length > 0
-  block:
-    - name: Allow new connections via SSH
-      loop: "{{ iptables_allowed_ips }}"
-      ansible.builtin.iptables:
-        chain: INPUT
-        protocol: tcp
-        destination_port: "{{ iptables_ssh_port }}"
-        ctstate: NEW
-        jump: ACCEPT
-        source: "{{ item }}"
+- name: Allow new connections via SSH
+  ansible.builtin.iptables:
+    chain: INPUT
+    protocol: tcp
+    destination_port: "{{ iptables_ssh_port }}"
+    ctstate: NEW
+    jump: ACCEPT
+    match_set: "{{ iptables_set_name }}"
+    match_set_flags: src
 
-    - name: Allow ICMP echo requests
-      loop: "{{ iptables_allowed_ips }}"
-      ansible.builtin.iptables:
-        chain: INPUT
-        protocol: icmp
-        jump: ACCEPT
-        source: "{{ item }}"
-        icmp_type: 8
+- name: Allow ICMP echo requests
+  ansible.builtin.iptables:
+    chain: INPUT
+    protocol: icmp
+    jump: ACCEPT
+    match_set: "{{ iptables_set_name }}"
+    match_set_flags: src
+    icmp_type: 8
 
 - name: Add firewall rules to LOGGING chain
   tags: skip-iptables-log
@@ -77,4 +79,3 @@
   ansible.builtin.apt:
     name: iptables-persistent
     update_cache: true
-    state: present

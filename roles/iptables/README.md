@@ -3,7 +3,7 @@
 IPtables configuration:
 ```
 - DROP policy for the FORWARD and INPUT chains
-- allowed SSH and ICMP echo requests from {{ iptables_allowed_ips }}
+- allowed SSH and ICMP echo requests are allowed for trusted addresses using ipset
 - allowed loopback traffic
 - added a LOGGING chain to log malformed packets
 ```
@@ -49,6 +49,19 @@ Role Variables
     <td>Specifies the maximum burst before the above limit kicks in</td>
     <td>str</td>
     <td>6</td>
+  </tr>
+    <tr>
+    <td>iptables_set_name</td>
+    <td>Set name for trusted IPs</td>
+    <td>str</td>
+    <td>''</td>
+  </tr>
+  </tr>
+    <tr>
+    <td>iptables_set_type</td>
+    <td>Set type</td>
+    <td>str</td>
+    <td>'hash:ip'</td>
   </tr>
 </tbody>
 </table>

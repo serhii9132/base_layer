@@ -1,0 +1,37 @@
+---
+- name: Install ipset
+  ansible.builtin.apt:
+    name: ipset
+    update_cache: true
+
+- name: Check if ipset exists
+  ansible.builtin.command:
+    cmd: ipset list "{{ iptables_set_name }}"
+  register: __ipset_status
+  changed_when: false
+  failed_when: false
+
+- name: Create ipset
+  ansible.builtin.command:
+    cmd: ipset create "{{ iptables_set_name }}" "{{ iptables_set_type }}"
+  when: __ipset_status.rc != 0
+
+- name: Get current ipset configuration
+  ansible.builtin.command:
+    cmd: ipset save "{{ iptables_set_name }}"
+  register: __ipset_save
+  changed_when: false
+
+- name: Add IP addresses
+  ansible.builtin.command:
+    cmd: ipset add "{{ iptables_set_name }}" "{{ item }}"
+  loop: "{{ iptables_allowed_ips }}"
+  when: ('add ' ~ iptables_set_name ~ ' ' ~ item) not in __ipset_save.stdout
+
+- name: Install ipset-persistent
+  ansible.builtin.apt:
+    name: ipset-persistent
+    update_cache: true
+
+- name: Import iptables.yaml
+  ansible.builtin.import_tasks: iptables.yaml
